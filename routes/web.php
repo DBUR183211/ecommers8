@@ -1,8 +1,9 @@
 <?php
 use App\Models\product;
+use App\Models\catagory;
 use Illuminate\Support\Facades\Route;
 use App\Http\controllers\ProductController;
-
+use App\Http\controllers\CatagoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/product/register',[ProductController::class,'register'])->name('product/register');
-Route::post('product.register',[ProductController::class,'store'])->name('product/register');
+Route::post('product/register',[ProductController::class,'store'])->name('product/register');
 Route::get('/product/list',[productController::class, 'get_all'])->name('product/list');
+
+Route::get('/catagory/register',[catagoryController::class,'register'])->name('catagory/register');
+Route::post('catagory/register',[catagoryController::class,'store'])->name('catagory/register');
+Route::get('/catagory/list',[catagoryController::class, 'get_all'])->name('catagory/list');
 Auth::routes();
