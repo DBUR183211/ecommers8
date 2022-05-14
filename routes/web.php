@@ -1,7 +1,7 @@
 <?php
-
+use App\Models\product;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\product;
+use App\Http\controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +13,11 @@ use app\Http\Controllers\product;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get("/product/register",[product::class,'register']);
-    {
-        rout::post('/product/register',[product::class,'store']);
-    }
-
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/product/register',[ProductController::class,'register'])->name('product/register');
+Route::post('product.register',[ProductController::class,'store'])->name('product/register');
+Route::get('/product/list',[productController::class, 'get_all'])->name('product/list');
+Auth::routes();
