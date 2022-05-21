@@ -4,32 +4,35 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateProductsTable extends Migration
 {
-    /**
+    /*
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('product', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('unit')->nullable();
-            $table->double('price',8,2)->nullable();
+            $table->double('price',82)->nullable();
             $table->integer('quantity')->nullable();
             $table->timestamps();
-        });
+         $table->unsignedBigInteger('Catagories_id')->foreign('Catagories_id')->references('id')->on('catagories')->onDelete('cascade');
+           
+           
+            });
     }
 
-    /**
+    /*
      * Reverse the migrations.
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('products');
     }
-};
+}
